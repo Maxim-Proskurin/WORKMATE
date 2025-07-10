@@ -11,3 +11,4 @@ dist/
 
 .Ds_Store
 Thumbs.db
+.vscode/
