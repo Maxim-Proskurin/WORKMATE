@@ -15,14 +15,13 @@ requires-python = ">=3.10"
 csv-tool = "csv_tool.cli:main"
 
 
-[project.optional-dependencies]
-dev = [
-    "pytest>=8.2",
-    "pytest-cov>=5.0",
-    "black>=24.4",
-    "flake8>=7.0",
-    "mypy>=1.10",
-]
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2"
+pytest-cov = "^5.0"
+black = "^24.4"
+flake8 = "^7.0"
+mypy = "^1.10"
+
 
 
 
