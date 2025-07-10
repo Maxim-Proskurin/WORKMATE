@@ -2,10 +2,6 @@ import subprocess
 from pathlib import Path
 
 
-import subprocess
-from pathlib import Path
-
-
 def test_where_price_gt_500(tmp_path: Path):
     csv_path = tmp_path / "test.csv"
     csv_path.write_text(

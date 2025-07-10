@@ -1,4 +1,3 @@
-import pytest
 from csv_tool.operations.filters import Filter
 
 
