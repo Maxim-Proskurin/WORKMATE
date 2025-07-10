@@ -5,6 +5,7 @@ from typing import List
 
 from csv_tool.io import read_csv
 from csv_tool.operations.filters import Filter
+from csv_tool.operations.aggregate import Aggregate
 
 def build_parser() -> argparse.ArgumentParser:
     """Создание и настройка ArgumentParser для csv-tool CLI."""
@@ -50,6 +51,11 @@ def main(argv: List[str] | None = None) -> None:
         result = Filter.from_expr(args.expr).run(rows)
         Filter.cute_print(result)
         return 
+    elif args.command == "aggregate":
+        agg = Aggregate.from_expr(args.expr)
+        result = agg.run(rows)
+        Aggregate.cute_print(agg.column, result)
+        return
 
 
 if __name__ == "__main__":
