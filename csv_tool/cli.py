@@ -3,6 +3,8 @@ from pathlib import Path
 import argparse
 from typing import List
 
+from csv_tool.io import read_csv
+
 
 def build_parser() -> argparse.ArgumentParser:
     """Создание и настройка ArgumentParser для csv-tool CLI."""
@@ -43,6 +45,8 @@ def main(argv: List[str] | None = None) -> None:
     """Точка входа как для консоли, так и для тестов."""
     args = build_parser().parse_args(argv)
     print(args)
+    rows = read_csv(args.path)        
+    print(f"DEBUG rows loaded → {len(rows)}")
 
 
 if __name__ == "__main__":
