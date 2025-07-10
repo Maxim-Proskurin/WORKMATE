@@ -4,7 +4,7 @@ import argparse
 from typing import List
 
 from csv_tool.io import read_csv
-
+from csv_tool.operations.filters import Filter
 
 def build_parser() -> argparse.ArgumentParser:
     """Создание и настройка ArgumentParser для csv-tool CLI."""
@@ -46,7 +46,10 @@ def main(argv: List[str] | None = None) -> None:
     args = build_parser().parse_args(argv)
     print(args)
     rows = read_csv(args.path)        
-    print(f"DEBUG rows loaded → {len(rows)}")
+    if args.command == "where":
+        result = Filter.from_expr(args.expr).run(rows)
+        Filter.cute_print(result)
+        return 
 
 
 if __name__ == "__main__":
