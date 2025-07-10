@@ -11,11 +11,6 @@ readme = "README.md"
 requires-python = ">=3.10"
 
 
-dependencies = [
-    "tabulate>=0.9",
-]
-
-
 [project.scripts]
 csv-tool = "csv_tool.cli:main"
 
@@ -44,3 +39,6 @@ python_version = "3.10"
 strict = true
 exclude = ["tests/"]  
 
+[tool.poetry.dependencies]
+python = "^3.10"
+tabulate = "^0.9.0"
