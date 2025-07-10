@@ -17,7 +17,6 @@ class Filter:
         self.op = op
         self.raw_value = raw_value  # ← исправил опечатку
 
-    
     @classmethod
     def from_expr(cls, expr: str) -> "Filter":
         """Преобразует строку вида 'price>100' в объект Filter."""
@@ -28,19 +27,16 @@ class Filter:
         op_map = {"<": operator.lt, ">": operator.gt, "=": operator.eq}
         return cls(col, op_map[sym], val)
 
-    
     @staticmethod
     def _cast(x: str) -> Any:
         """Ставит float, если строка выглядит как число, иначе оставляет строку."""
         return float(x) if x.replace(".", "", 1).isdigit() else x
 
-    
     def run(self, rows: List[Row]) -> List[Row]:
         """Вернёт список строк, удовлетворяющих условию."""
         right = self._cast(self.raw_value)
         return [r for r in rows if self.op(self._cast(r[self.column]), right)]
 
-    
     @staticmethod
     def cute_print(rows: List[Row]) -> None:
         """Таблица или сообщение об отсутствии совпадений."""
