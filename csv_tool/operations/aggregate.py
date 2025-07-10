@@ -32,7 +32,7 @@ class Aggregate:
         if self.func_name == "avg":
             return mean(values)
         if self.func_name == "min":
-            return mean(values)
+            return min(values)
         return max(values)
     
     @staticmethod
