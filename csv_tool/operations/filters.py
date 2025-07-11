@@ -13,8 +13,7 @@ class Filter:
     """Парсит выражение 'col>value' и фильтрует строки CSV."""
 
     def __init__(
-        self,
-        column: str,
+        self, column: str,
         op: Callable[[Any, Any], bool],
         raw_value: str
     ):
@@ -31,7 +30,11 @@ class Filter:
         )
         if not m:
             raise ValueError(f"Неверное выражение фильтра: {expr}")
-        col, sym, val = (m.group("col"), m.group("sym"), m.group("val"))
+        col, sym, val = (
+            m.group("col"),
+            m.group("sym"),
+            m.group("val")
+        )
         op_map = {"<": operator.lt, ">": operator.gt, "=": operator.eq}
 
         return cls(col, op_map[sym], val)
